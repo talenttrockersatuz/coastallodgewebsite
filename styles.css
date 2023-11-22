@@ -1,0 +1,91 @@
+/*Css Styles*/
+body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+}
+nav {
+    background-color: #333333;
+    color:#fff;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding:0;
+    display:flex;
+}
+nav ul li{
+    margin-right: 20px;
+}
+nav ul li a{
+    text-decoration: none;
+    color:#fff;
+}
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+section h2 {
+    margin-bottom: 40px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+/*Modal*/
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content{
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close{
+    color: #aaa;
+    float:right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor:pointer;
+}
+.close:hover,
+.close:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+
+}
+.btn:hover{
+    background-color: #0056b3;
+
+}
+
+.lodge-image{
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

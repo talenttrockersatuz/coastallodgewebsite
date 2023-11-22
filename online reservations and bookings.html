@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodge  Reservations</title>
+</head>
+<body>
+    <h1>Make a Reservation</h1>
+    <form action="process_reservation.php" method="post">
+        <label for="check-in-date">Check-in Date</label>
+        <input type="date" id="check-in-date" name="check-in-date" required><br>
+        <label for="check-out-date">Check-out Date</label>
+        <input type="date" id="check-out-date" name="check-out-date" required><br>
+        <h2>Room Type:</h2>
+        <input type="radio" id="room-type-1" name="room-type" value="1" required>
+        <label for="room-type-1">(#35 dollars per night)</label><br>
+        <input type="radio" id="room-type-2" name="room-type" value="2" required>
+        <label for="room-type-2">Room 2($30 dollars per night)</label>
+        <input type="radio" id="room-type-3" name="room-type" value="3" required>
+        <label for="room-type-3">Room 3($30 dollars per night)</label>
+        <input type="radio" id="room-type-3" name="room-type" value="3" required>
+        <label for="room-type-3">Room 3($30 dollars per night)</label>
+        <input type="radio" id="room-type-4" name="room-type" value="4" required>
+        <label for="room-type-4">Room 4($30 dollars per night)</label>
+        <input type="radio" id="room-type-5" name="room-type" value="5" required>
+        <label for="room-type-5">Room 5($30 dollars per night)</label>
+        <input type="radio" id="room-type-6" name="room-type" value="6" required>
+        <label for="room-type-6">Room 6($30 dollars per night)</label>
+        <input type="radio" id="room-type-7" name="room-type" value="7" required>
+        <label for="room-type-7">Room 7($30 dollars per night)</label>
+        <input type="radio" id="room-type-8" name="room-type" value="8" required>
+        <label for="room-type-8">Room 8($30 dollars per night)</label>
+        <input type="radio" id="room-type-9" name="room-type" value="9" required>
+        <label for="room-type-9">Room 9($30 dollars per night)</label>
+        <input type="radio" id="room-type-10" name="room-type" value="10" required>
+        <label for="room-type-10">Room 10($35 dollars per night)</label>
+
+        <label for="guests">Number of Guests:</label>
+        <input type="number" id="guests" name="guests" min="1" required><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"  required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"  required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone"required><br>
+        <h2>Payment Options</h2>
+        <input type="radio" id="ecocash" name="payment-method" value="ecocash" required>
+        <label for="ecocash">Ecocash</label><br>
+
+        <input type="radio" id="innbucks" name="payment-method" value="innbucks" required>
+        <label for="innbucks">Innbucks</label><br>
+
+        <input type="radio" id="nostro-transfer" name="payment-method" value="nostro-transfer" required>
+        <label for="nostro-transfer">Nostro Transfer</label><br>
+
+        <h2>confirmation</h2>
+        <input type="checkbox" id="confirmation-email" name="confirmation-email" checked>
+        <label for="confirmation-email">Send Confirmation email</label><br>
+        <input type="submit" value="Make Reservation">
+
+    </form>
+
+    <script>
+
+        window.addEventListener('DOMContentLoaded',function(){
+            var roomTypeRadios=document.queryselectorAll('input[name="room-type"]');
+            var checkInDateInput=document.getElementById('check-in-date');
+            var checkOutDateInput=document.getElementById('check-out-date')
+            function isRoomAvailable(roomNumber,checkInDate,checkOutDate){
+                if (roomNumber==='1'|| roomNumber==='10'){
+                    return true;
+                }else{
+                    return false;
+                }
+    
+    
+                
+            }
+    
+            function updateRoomAvailability(){
+                var checkInDate=new Date(checkInDateInput.value);
+                var checkOutDate=new Date(checkOutDateInput.value);
+                roomTypeRadios.forEach(function(radio){
+                    radio.disabled=!isRoomAvailable(radio.value,checkInDate,checkOutDate);
+                });
+            }
+    
+            checkInDateInput.addEventListener('change',updateRoomAvailability);
+            checkOutDateInput.addEventListener('change',updateRoomAvailability);
+            updateRoomAvailability();
+        });
+    </script>
+    
+</body>
+</html>
