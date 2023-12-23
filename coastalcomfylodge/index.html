@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lodge website</title>
+    <style>
+        body{
+            background-color:yellow;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+        }
+        .left {
+            flex: 1;
+            background-color: greenyellow;
+            color: white;
+            padding: 20px;
+        }
+        .right{
+            flex: 1;
+            background-color: green;
+            color: white;
+            padding: 20px;
+        
+        }
+        .page{
+            margin: 50px;
+        }
+        .accommodation-images{
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            width: 700px;
+        }
+        .accommodation-imagesimg{
+            display: block;
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+        .reservation-form{
+            margin-top:20px;
+
+        }
+        .payment-options{
+            margin-top: 20px;
+        }
+        
+
+        
+        .
+
+        
+    </style>
+    <script>
+        function toggleAccommodationImages(){
+            var images=document.getElementById("accommodation-images");
+            
+            if(images.style.display==="none"){
+                images.style.display="block";
+                
+            }
+            else{
+                images.style.display="none";
+                
+            }
+        }
+        function submitReservationform(){
+            var name=document.getElementById("name").value;
+            var email=document.getElementById("email").value;
+            var room=document.getElementById("room").value;
+            var arrivalDate=document.getElementById("arrival-date").value;
+            var departureDate=document.getElementById("departure-date").value;
+            var paymentMethod=document.querySelector('input[name="payment-method"]:checked').value;
+
+            var formData={
+                name:name,
+                email:email,
+                room:room,
+                arrivalDate:arrivalDate,
+                departureDate:departureDate,
+                paymentMethod:paymentMethod,
+
+            };
+            //sending form data using Ajax
+            var xhr=new XMLHttpRequest();
+            xhr.open("POST","submit_reservation.php",true);
+            xhr.setRequestHeader("Content-type","application/json");
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    alert(" Reservation Submitted Successfully!");
+                }
+            };
+            console.log(formData);
+            xhr.send(JSON.stringify(formData));
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            
+            <div class="page">
+                <h1><a href="#" onclick="toggleAccommodationImages();return false;"id="home-page-link">Home Page</a></h1>
+            <div id="accommodation-images" class="accommodation-images">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0043.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0043.jpg"> 
+                
+                
+            </div>
+                <p>Welcome to CoastalComfy lodge!</p>
+                
+            </div>
+            
+            
+                
+                
+            </div>
+        </div>
+    <div class="right">
+        <h1>Online Reservation</h1>
+        <div class="page">
+            <form class="reservation form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+
+                <label for="room">Room:</label>
+                <select id="room" name="room" required>
+                    <option value="">Select Room</option>
+                    <Option value="Room 1">Room 1(ensuite)</Option>
+                    <Option value="Room 2">Room 2</Option>
+                    <Option value="Room 3">Room 3</Option>
+                    <Option value="Room 4">Room 4</Option>
+                    <Option value="Room 5">Room 5</Option>
+                    <Option value="Room 6">Room 6</Option>
+                    <Option value="Room 7">Room 7</Option>
+                    <Option value="Room 8">Room 8</Option>
+                    <Option value="Room 9">Room 9</Option>
+                    <Option value="Room 10">Room 10(ensuite)</Option></select><br><br>
+                    <label for="arrival-date">Arrival Date</label>
+                    <input type="date" id="arrival-date" name="arrival-date" required><br><br>
+                    <label for="departure-date">Departure Date</label>
+                    <input type="date" id="departure-date" name="departure-date" required><br><br>
+
+                    <label for="Payment Method"></label'''<html<label>Payment Method:</label><br>
+                    <input type="radio" id="payment-ecocash" name="payment-method" value="Ecocash" required>
+
+                    <label for="payment-ecocash">Ecocash:0773 490 442</label><br>
+                    <input type="radio" id="payment-innbucks" name="payment-method" value="innbucks" required>
+                    <label for="payment-innbucks">innbucks:0773 490 442</label><br>
+                    <input type="radio" id="payment-nostro" name="payment-method" value="Nostro" required>
+                    <label for="payment-nostro">Nostro:Account Number:52501908912</label><br><br>
+                    <h1>Room Prices</h1>
+
+                    <p>Room 1 and Room10(Ensuite)$35 per night</p>
+                    <p>Room 2 to Room 9:$30 per night</p>
+                    <button type="button" onclick="submitReservationform()">Submit</button>
+
+            </form>
+            <!--Online reservation page content-->
+        </div>
+    </div>
+    <div class="right">
+        <h2>About Us</h2>
+        <p>We offer affordable accommodation services at CoastalComfy lodge located at 15237 Mzari Extension Chinhoyi.Get in touch with us:</p>
+        <ul>
+            <li>Phone:<a href="tel:+263787418977">0787418977</a></li>
+            <li>Chat with us via Whatsapp:<a href="https://wa.me/61403648753">+61403648753</a></li>
+        </ul>
+        </div>
+        
+    </div>
+
+        
+    </div>
+    </div>
+    <div class="container">
+        <div class="left">
+            <h1>Accommodation</h1>
+            <div class="page">
+               <h1><a href="#"onclick="toggleAccommodationImages();return false;id="Accommodation">Accommodation services we offer</a></h1>
+               <div id="accommodation-images" class="accommodation-images">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0041.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0041.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0042.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0042.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0043.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0043.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0044.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0044.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0045.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0045.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0046.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0046.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0047.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0047.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0048.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0048.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0049.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0049.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0050.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0050.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0051.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0051.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0053.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0053.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0054.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0054.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0055.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0055.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0056.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0056.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0057.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0057.jpg">
+                <img src="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0058.jpg" alt="C:\Users\huruchena\Desktop\images\P-IMG-20231216-WA0058.jpg">
+            
+    
+    
+               </div>
+               <script>
+               
+                   var images=document.getElementById("accommodation-images");
+                   images.style.display="none";
+            
+               
+                    
+               </script>
+        
+        </div>
+    <div class="right">
+        <h1><a href="https://www.google.com/maps?q=Coastal+Comfy+lodge+15237+Mzari+extension+Chinhoyi+Zimbabwe"target="_blank">Location and Surroundings</a></h1>
+
+        
+        <div class="page">
+            <!--Location and surroundings page content-->
+            <p>The CoastalComfy Lodge is located at:</p>
+            <p>15237 Mzari Extension,Chinhoyi,Zimbabwe</p>
+
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="left">
+            <h1>Facilities</h1>
+            <dic class="page">
+                <!--Facilities page content-->
+                <p>Accommodation,Conferences,Parties,Meetings,Dinners,Self Catering,Borehole Water,Power Backup,Well-Eqipped Kitchen,Spacious Rooms</p>
+
+            </div>
+        </div>
+    <div class="right">
+        
+        <div class="page">
+            <!--About us page-->
+        </div>
+    </div>
+</div>
+
+    
+<div id="accommodation-images" class="accommodation-images">
+    
+    
+</div>
+<script>
+
+    var images=document.getElementById("accommodation-images");
+    images.style.display="none";
+    
+    
+</script>
+    
+   
+</body>
+</html>
